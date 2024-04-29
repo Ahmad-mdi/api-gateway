@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-route
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - AddRequestHeader=X-Request-Blue, Blue
+            - AddResponseHeader=X-Response-Red, Red
+
+server:
+  port: 89
